@@ -82,5 +82,10 @@ FROM runningavg as q1
 #creates the df from query 3 
 final = ps.sqldf(query3, locals())
 
+
+## Add datetime and date fields
+final['datetime'] = pd.to_datetime(final['seconds_since_Epoch'], unit='s')
+final['date'] = final['datetime'].dt.date
+
 #write the output csv
 final.to_csv(outputfilepath)
