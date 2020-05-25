@@ -10,4 +10,4 @@ state=$1
 
 #GET http://coronavirusapi.com/getTimeSeries/$state >> ./data/State_ts_${state}_${file_suffix}.csv
 
-GET http://coronavirusapi.com/getTimeSeries/$state >> ./data/State_ts_${state}.csv
+GET http://coronavirusapi.com/getTimeSeries/$state >> ../data/State_ts_${state}.csv
