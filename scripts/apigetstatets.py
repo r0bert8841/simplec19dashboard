@@ -3,8 +3,10 @@ import os
 import subprocess
 
 cwd = os.getcwd()
+pwd = os.path.dirname(cwd)
+
 filepath = cwd + '/data/populationdata.csv'
-apiscriptpath = cwd + "/apiget.sh"
+apiscriptpath = cwd + "/scripts/apiget.sh"
 
 df = pd.read_csv(filepath, delimiter='|')
 

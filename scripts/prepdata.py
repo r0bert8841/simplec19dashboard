@@ -5,6 +5,8 @@ import datetime
 import os
 
 cwd = os.getcwd()
+pwd = os.path.dirname(cwd)
+
 filepath = cwd + '/data/combined_ts.csv'
 populationfilepath = cwd + '/data/populationdata.csv'
 outputfilepath = cwd + '/data/coronavirus_final.csv'
