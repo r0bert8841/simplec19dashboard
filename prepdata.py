@@ -55,7 +55,7 @@ population_cleaned = ps.sqldf(query_pop, locals())
 query1 = """
 SELECT q2.abbr
     , q2.date
-    , coalesce(q1.daily_records,0)
+    , coalesce(q1.daily_records,0) as daily_records
     , coalesce(q1.tested, lag(q1.tested,1) over (partition by q2.abbr order by q2.date )) as tested 
     , coalesce(q1.positive, lag(q1.positive,1) over (partition by q2.abbr order by q2.date )) as positive 
     , coalesce(q1.deaths, lag(q1.deaths,1) over (partition by q2.abbr order by q2.date )) as deaths 
