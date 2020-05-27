@@ -1,6 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style>
+        .dropdown {
+        float: left;
+        overflow: hidden;
+        }
+
+        .dropdown .dropbtn {
+        font-size: 17px;    
+        border: none;
+        outline: none;
+        color: white;
+        padding: 14px 16px;
+        background-color: inherit;
+        font-family: inherit;
+        margin: 0;
+        }
+
+        .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        }
+
+        .dropdown-content a {
+        float: none;
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+        }
+
+        .topnav a:hover, .dropdown:hover .dropbtn {
+        background-color: #555;
+        color: white;
+        }
+
+        .dropdown-content a:hover {
+        background-color: #ddd;
+        color: black;
+        }
+
+        .dropdown:hover .dropdown-content {
+        display: block;
+        }
+    </style>
 
     <meta charset="UTF-8">
     <title>Title</title>
@@ -9,6 +58,36 @@
 <body>
     {% extends "template.html" %}
     {% block content %}
+
+    <form>
+        <label>
+          Choose your preferred party date (required, April 1st to 20th):
+          <input type="date" name="date_variable" min="2020-01-01" max="2020-12-31">
+          <span class="validity"></span>
+        </label>
+        <script type="text/javascript">
+            var date = date_variable.value;
+            var urldate = date.toString()
+        </script>
+          
+        <p>
+          <button>Submit</button>
+        </p>
+      </form>
+
+    <div class="dropdown">
+        <button class="dropbtn">Dropdown 
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+          <a id="myLink1" href="{{url_for('data', value='tested')}}">Test Cases</a>
+          <a id="myLink2" href="{{url_for('data', value='positive')}}">Positive Cases</a>
+          <a id="myLink3" href="{{url_for('data', value='deaths')}}">Deaths</a>
+          <a id="myLink4" href="{{url_for('data', value='tested_pm')}}">Test Cases Per Million</a>
+          <a id="myLink5" href="{{url_for('data', value='positive_pm')}}">Positive Cases Per Million</a>
+          <a id="myLink6" href="{{url_for('data', value='deaths_pm')}}">Deaths Per Million</a>
+        </div>
+      </div> 
     {% for table in tables %}
                 {{titles[loop.index]}}
                 {{ table|safe }}
